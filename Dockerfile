@@ -17,13 +17,13 @@ RUN sed -i /etc/apt/sources.list -e 's/$/ non-free'/ && \
     apt-get install -y libgmp-dev libmcrypt-dev libpng12-dev libfreetype6-dev libjpeg-dev libpng-dev libldap2-dev && \
     rm -rf /var/lib/apt/lists/*
     
-+# OpenShift permission modifications
-+RUN mkdir -p /var/run/apache2 && chmod 777 -R /var/run/apache2 &&\
-+    mkdir -p /var/log/apache2 && chmod 777 -R /var/log/apache2 &&\
-+    mkdir -p /var/lock/apache2 && chmod 777 -R /var/lock/apache2 &&\
-+    mkdir -p /etc/apache2/sites-enabled && chmod 777 -R /etc/apache2/sites-enabled &&\
-+    mkdir -p /var/www/html && chmod 777 -R /var/www/html && \
-+    chmod 664 /etc/passwd
+# OpenShift permission modifications
+RUN mkdir -p /var/run/apache2 && chmod 777 -R /var/run/apache2 &&\
+    mkdir -p /var/log/apache2 && chmod 777 -R /var/log/apache2 &&\
+    mkdir -p /var/lock/apache2 && chmod 777 -R /var/lock/apache2 &&\
+    mkdir -p /etc/apache2/sites-enabled && chmod 777 -R /etc/apache2/sites-enabled &&\
+    mkdir -p /var/www/html && chmod 777 -R /var/www/html && \
+    chmod 664 /etc/passwd
 
 # Install required packages and files required for snmp
 RUN curl -s ftp://ftp.cisco.com/pub/mibs/v2/CISCO-SMI.my -o /var/lib/mibs/ietf/CISCO-SMI.txt && \
